@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
 
     public Player player;
-    [SerializeField] Transform playerSpawnPoint;
-
+    [SerializeField] public Transform playerSpawnPoint;
+    [SerializeField] public GameObject playerPrefab;
 
 
     public int lastLevel = 0;
@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
         if(!level) return;
         if(enemyCounter.IsEnemyFinished())
         {
             isWin = true;
             ClearTheScene();
-            player.gameObject.transform.position = playerSpawnPoint.position; 
         }
 
         if(player.isDead)
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         Destroy(level.gameObject);
         enemyCounter.enemies.Clear();
+        Destroy(player.gameObject);
         level = null;
     
     }

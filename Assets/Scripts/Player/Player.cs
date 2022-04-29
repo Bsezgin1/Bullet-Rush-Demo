@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        Destroy(gameObject);
+       //Destroy(gameObject);
     }
 
     

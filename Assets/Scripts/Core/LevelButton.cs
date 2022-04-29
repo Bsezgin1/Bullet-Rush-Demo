@@ -9,11 +9,13 @@ public class LevelButton : MonoBehaviour
     {
         gameManager.isLose = false;
         gameManager.isWin = false;
+        Instantiate(gameManager.playerPrefab, gameManager.playerSpawnPoint);
         Instantiate(gameManager.allLevels[gameManager.lastLevel+1]);
     }
 
     public void Restart()
     {
+        Instantiate(gameManager.playerPrefab, gameManager.playerSpawnPoint);
         gameManager.isGameStarted = true;
         gameManager.isLose = false;
         gameManager.isWin = false;

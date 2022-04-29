@@ -2178,6 +2178,7 @@ MonoBehaviour:
   enemyCounter: {fileID: 115501157}
   player: {fileID: 0}
   playerSpawnPoint: {fileID: 2145110840}
+  playerPrefab: {fileID: 5756792700066226263, guid: c9e516520c71c69498f2cc0736d33212, type: 3}
   lastLevel: 0
   level: {fileID: 0}
   allLevels:
