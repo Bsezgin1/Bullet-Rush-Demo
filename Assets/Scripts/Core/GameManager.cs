@@ -51,6 +51,23 @@ public class GameManager : MonoBehaviour
     
     }
 
+    public void LoadNextLevel()
+    {
+        isLose=false;
+        isWin=false;
+        Instantiate(playerPrefab, playerSpawnPoint);
+        Instantiate(allLevels[lastLevel+1]);
+    }
+
+    public void LoadSameLevel()
+    {
+        isGameStarted = true;
+        isLose=false;
+        isWin=false;
+        Instantiate(playerPrefab, playerSpawnPoint);
+        Instantiate(allLevels[lastLevel]);
+    }
+
 }
 
 
