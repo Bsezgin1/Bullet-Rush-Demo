@@ -5,18 +5,35 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float life = 5f;
+    private float lifeTimer =0;
     private float bulletDamage = 100;
-    private void Awake() 
+   
+    private void Update()
     {
-        Destroy(gameObject, life);
+        BulletLifeTimer();
+
     }
-    
+
+    private void BulletLifeTimer()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            lifeTimer += Time.deltaTime;
+        }
+
+        if (lifeTimer >= life)
+        {
+            gameObject.SetActive(false);
+            lifeTimer = 0f;
+        }
+    }
+
     private void OnTriggerStay(Collider other) 
     {
        if(other.gameObject.CompareTag("Enemy"))
        {
             other.GetComponentInParent<Health>().TakeDamege(bulletDamage);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
        }
        else 
        {

@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoSingleton<Player>
 {
     public bool isDead;
     FollowCamera followCamera;
-    GameManager gameManager;
 
     private void Start() 
     {
         followCamera = FindObjectOfType<FollowCamera>();
         followCamera.target = gameObject.transform;
 
-        gameManager = FindObjectOfType<GameManager>();
-        gameManager.player = this;
+        
+        GameManager.Instance.player = this;
+        
     }
 
 
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         isDead = true;
-       //Destroy(gameObject);
+        GameManager.Instance.isLose = true;
     }
 
     

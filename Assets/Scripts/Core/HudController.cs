@@ -9,22 +9,22 @@ public class HudController : MonoBehaviour
     [SerializeField] private Button nextLevelButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button startButton;
-    [SerializeField] public GameManager gameManager;
+    //[SerializeField] public GameManager gameManager;
 
     [SerializeField] FloatingJoystick floatingJoystick;
     void Update()
     {
-        if (gameManager.isWin)
+        if (GameManager.Instance.isWin)
         {
             
             GetWinImage();
         }
 
-        if(gameManager.isLose)
+        if(GameManager.Instance.isLose)
         {
             GetLoseImage();
         }
-        if(!gameManager.isWin && !gameManager.isLose && gameManager.isGameStarted)
+        if(!GameManager.Instance.isWin && !GameManager.Instance.isLose && GameManager.Instance.isGameStarted)
         {
             EnableHud();
         }
@@ -33,6 +33,7 @@ public class HudController : MonoBehaviour
 
     private void EnableHud()
     {
+        restartButton.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);
         gameOverImage.gameObject.SetActive(false);
         floatingJoystick.gameObject.SetActive(true);

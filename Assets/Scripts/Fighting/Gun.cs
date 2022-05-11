@@ -36,7 +36,8 @@ public class Gun : MonoBehaviour
         {
             timeSinceLastFire =0;
 
-            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            var bullet = ObjectPool.Instance.GetBulletObject();            //Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.transform.position = bulletSpawnPoint.position;
             bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
         }
         

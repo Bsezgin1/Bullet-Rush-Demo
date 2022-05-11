@@ -12,6 +12,7 @@ public class EnemyCounter : MonoBehaviour
     
     void Update()
     {   
+        if(!GameManager.Instance.isGameStarted) return;
         enemyRemainingText.text = enemies.Count.ToString();
         
         CheckEnemies();

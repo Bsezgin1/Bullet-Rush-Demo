@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
     [SerializeField] EnemyCounter enemyCounter;
-
-
 
     public Player player;
     [SerializeField] public Transform playerSpawnPoint;
@@ -16,8 +15,6 @@ public class GameManager : MonoBehaviour
 
     public int lastLevel = 0;
     public Level level;
-    [SerializeField] public Level[] allLevels;
-
 
     public bool isWin;
     public bool isLose;
@@ -26,48 +23,55 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+       
         
-        if(!level) return;
         if(enemyCounter.IsEnemyFinished())
         {
             isWin = true;
-            ClearTheScene();
+           
         }
 
-        if(player.isDead)
-        {
-            isLose = true;     
-            ClearTheScene();
-        }
+        
 
     }
 
     private void ClearTheScene()
     {
-        Destroy(level.gameObject);
-        enemyCounter.enemies.Clear();
-        Destroy(player.gameObject);
-        level = null;
-    
+        player.transform.position = playerSpawnPoint.position;
+        for (int i = 0; i < enemyCounter.enemies.Count; i++)
+        {
+            Destroy(enemyCounter.enemies[i]);
+        }
+       enemyCounter.enemies.Clear();
     }
 
     public void LoadNextLevel()
     {
         isLose=false;
         isWin=false;
-        Instantiate(playerPrefab, playerSpawnPoint);
-        Instantiate(allLevels[lastLevel+1]);
+        LevelManager.Instance.currentLevel++;
+        LevelManager.Instance.GetLevel();
+        ClearTheScene();
+        EnemySpawner.Instance.SpawnEnemies(LevelManager.Instance.enemyAmount,LevelManager.Instance.bigEnemyAmount);
+        
     }
 
     public void LoadSameLevel()
     {
-        isGameStarted = true;
         isLose=false;
         isWin=false;
-        Instantiate(playerPrefab, playerSpawnPoint);
-        Instantiate(allLevels[lastLevel]);
+        ClearTheScene();
+        EnemySpawner.Instance.SpawnEnemies(LevelManager.Instance.enemyAmount,LevelManager.Instance.bigEnemyAmount);
+       
+        
     }
 
+    public void StartGame()
+    {
+        isGameStarted = true;
+        Instantiate(playerPrefab, playerSpawnPoint);
+        EnemySpawner.Instance.SpawnEnemies(LevelManager.Instance.enemyAmount,LevelManager.Instance.bigEnemyAmount);
+    }
 }
 
 

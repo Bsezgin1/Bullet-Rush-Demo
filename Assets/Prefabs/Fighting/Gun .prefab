@@ -98,6 +98,9 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 8832554785672926101}
   bulletPrefab: {fileID: 3489091033570071040, guid: 788c1d4c76d0f7543a7eeac7ec414b7d, type: 3}
   bulletSpeed: 10
+  timeBetweenFires: 0.5
+  timeSinceLastFire: Infinity
+  vision: {fileID: 0}
 --- !u!1 &8832554785672926100
 GameObject:
   m_ObjectHideFlags: 0

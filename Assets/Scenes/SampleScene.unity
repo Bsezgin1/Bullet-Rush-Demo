@@ -563,6 +563,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183175070}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &193669154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193669155}
+  - component: {fileID: 193669156}
+  m_Layer: 0
+  m_Name: Enemy Spawer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &193669155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193669154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1577805440}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &193669156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193669154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b079e7fed5ab4d926237d187d9dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 4037590615778360206, guid: 3202f792c9c78cb46b5e6030d566cec1, type: 3}
+  bigEnemyPrefab: {fileID: 854577570342740062, guid: 36f9dac762b0e2242b01e8a1081ee48a, type: 3}
+  enemyAmount: 0
+  bigEnemyAmount: 0
+  xPos: 0
+  zPos: 0
 --- !u!1 &253466265
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +958,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &705992234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705992235}
+  - component: {fileID: 705992236}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705992235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705992234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1577805440}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &705992236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705992234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9a5f2a733a39d429996c93c9d2901f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: 74cccda3c4f2e5b41ba384857225a837, type: 2}
+  - {fileID: 11400000, guid: 5179b7520279abe49aeea2586e3660f2, type: 2}
+  - {fileID: 11400000, guid: be1a644353999064996c645efaf031c6, type: 2}
+  - {fileID: 11400000, guid: 4d89ef084bb164c438fb026f6c6d3a81, type: 2}
+  - {fileID: 11400000, guid: 75277f86123bfa848b7a8365a6ba2502, type: 2}
+  level: {fileID: 0}
+  currentLevel: 0
+  enemyAmount: 0
+  bigEnemyAmount: 0
 --- !u!1 &723222367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1205,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 759728210}
         m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1198,7 +1300,6 @@ MonoBehaviour:
   nextLevelButton: {fileID: 862298169}
   restartButton: {fileID: 1931381868}
   startButton: {fileID: 759728211}
-  gameManager: {fileID: 1828422802}
   floatingJoystick: {fileID: 161651242}
 --- !u!1 &805559020
 GameObject:
@@ -2129,9 +2230,57 @@ Transform:
   - {fileID: 1828422801}
   - {fileID: 799663513}
   - {fileID: 2145110840}
+  - {fileID: 193669155}
+  - {fileID: 705992235}
+  - {fileID: 1599286711}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1599286710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599286711}
+  - component: {fileID: 1599286712}
+  m_Layer: 0
+  m_Name: Object Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1599286711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599286710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1577805440}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1599286712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599286710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4e5eb0b1b3f9a4486e6539890507cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3489091033570071040, guid: 788c1d4c76d0f7543a7eeac7ec414b7d, type: 3}
+  poolSize: 10
 --- !u!1 &1828422800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,10 +2330,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 5756792700066226263, guid: c9e516520c71c69498f2cc0736d33212, type: 3}
   lastLevel: 0
   level: {fileID: 0}
-  allLevels:
-  - {fileID: 3535569190506196107, guid: d2c8c9067eb3e2b45a12bd3abd79ff32, type: 3}
-  - {fileID: 1617467496169371777, guid: 08625cd803687fe439972d71c1db750d, type: 3}
-  - {fileID: 3610026228106578659, guid: 9f30f060d94bc804aab1215a1aee6dcb, type: 3}
   isWin: 0
   isLose: 0
   isGameStarted: 0

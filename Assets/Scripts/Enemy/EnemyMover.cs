@@ -10,17 +10,22 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
 
     private 
-    void Awake()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = Player.Instance.gameObject;
     }
 
     
     void Update()
     {
-        if(!player) return;
+        if (!player) return;
+        MoveToPlayer();
+    }
+
+    private void MoveToPlayer()
+    {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if(distanceToPlayer < range)
+        if (distanceToPlayer < range)
         {
             navMeshAgent.destination = player.transform.position;
         }

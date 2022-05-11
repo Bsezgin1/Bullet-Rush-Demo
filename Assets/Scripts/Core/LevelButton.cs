@@ -14,4 +14,9 @@ public class LevelButton : MonoBehaviour
     {
         gameManager.LoadSameLevel();
     }
+
+    public void StartGame()
+    {
+        gameManager.StartGame();
+    }
 }
